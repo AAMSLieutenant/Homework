@@ -3,20 +3,30 @@ package Project;
 import java.util.Scanner;
 import java.lang.Math;
 
+
 public class Work {
 
 
-    public static int begin;
-    public static int end;
-    public static int fibo;
-    public static int fiboResult;
-    public static int F1;
-    public static int F2;
-    public static double fOdd;
-    public static double fEven;
+    private static int begin;
+    private static int end;
+    private static int fibo;
+    private static int fiboResult;
+    private static int F1;
+    private static int F2;
+    private static double fOdd;
+    private static double fEven;
 
-    public static int fibonacci(int fibo)  {
-        if(fibo>=0){
+    private static boolean isNumber(String s){
+        try {
+            Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+    }
+
+    private static int fibonacci(int fibo)  {
             if(fibo == 0){
                 return 0;
             }
@@ -26,22 +36,9 @@ public class Work {
             else{
                 return fibonacci(fibo - 1) + fibonacci(fibo - 2);
             }
-        }
-        else{
-            if(fibo == 0){
-                return 0;
-            }
-            else if(fibo == -1){
-                return 1;
-            }
-            else{
-                return fibonacci(fibo +2) - fibonacci(fibo + 1);
-            }
-        }
-
     }
 
-    public static void count(int fibo){
+    private static void count(int fibo){
 
         double even=0;
         double odd=0;
@@ -70,46 +67,7 @@ public class Work {
 
     }
 
-
-    public static void start(){
-        Scanner sc=new Scanner(System.in);
-//        while(true) {
-//
-//                System.out.print("Set the start of the sample:");
-//                String s=sc.next();
-//                try{
-//                    Integer.parseInt(s);
-//                }
-//                catch(NumberFormatException nfe){
-//                    System.out.println("Insert only numbers");
-//                }
-//                begin = sc.nextInt();
-//
-//        }
-
-        System.out.print("Set the start of the sample:");
-        end=sc.nextInt();
-        print();
-        System.out.print("Set the size of the fibonacci sequence:");
-        fibo=sc.nextInt();
-        count(fibo);
-        System.out.println("Fibonacci result:"+fiboResult);
-        System.out.println("Fibonacci biggest odd:"+F1);
-        System.out.println("Fibonacci biggest even:"+F2);
-        System.out.println("Fibonacci odd percentage:"+fOdd);
-        System.out.println("Fibonacci even percentage:"+fEven);
-        //System.out.println(fibonacci(fibo));
-
-
-
-    }
-
-
-
-
-
-
-    public static void print(){
+    private static void print(){
 
         int oddSum=0;
         int evenSum=0;
@@ -135,11 +93,62 @@ public class Work {
         System.out.println("Even numbers sum: "+evenSum);
     }
 
+    private static void start(){
+        Scanner sc=new Scanner(System.in);
 
+        while(true) {
+            System.out.print("Set the start of the sample:");
+            String s=sc.next();
+            if(isNumber(s)){
+
+                begin = Integer.parseInt(s);
+                break;
+            }
+            else{
+                System.out.println("You should input only numbers");
+            }
+        }
+
+        while(true) {
+            System.out.print("Set the end of the sample:");
+            String s=sc.next();
+            if(isNumber(s)){
+                end = Integer.parseInt(s);
+                if(end>begin) {
+                    break;
+                }
+                else{
+                    System.out.println("You should input only numbers");
+                }
+            }
+            else{
+                System.out.println("You should input only numbers");
+            }
+        }
+
+        print();
+
+        while(true) {
+            System.out.print("Set the size of the fibonacci sequence:");
+            String s=sc.next();
+            if(isNumber(s)){
+
+                fibo=Integer.parseInt(s);
+                break;
+            }
+            else{
+                System.out.println("You should input only numbers");
+            }
+        }
+        count(fibo);
+        System.out.println("Fibonacci result:"+fiboResult);
+        System.out.println("Fibonacci biggest odd:"+F1);
+        System.out.println("Fibonacci biggest even:"+F2);
+        System.out.println("Fibonacci odd percentage:"+fOdd);
+        System.out.println("Fibonacci even percentage:"+fEven);
+    }
 
     public static void main(String[] args) {
-        //System.out.println("Hello world!");
         start();
-        //print();
     }
 }
