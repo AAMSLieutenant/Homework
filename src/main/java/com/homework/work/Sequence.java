@@ -1,39 +1,64 @@
 package com.homework.work;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Sequence {
 
     private static int begin;
     private static int end;
+    private static int oddSum;
+    private static int evenSum;
+    private static ArrayList<Integer> oddArr;
+    private static ArrayList<Integer> evenArr;
 
-    private static void printSeq(){
+    public Sequence(){
 
-        int oddSum=0;
-        int evenSum=0;
-        System.out.print("Odd numbers:");
+
+    }
+
+    static{
+        oddArr=new ArrayList<Integer>();
+        evenArr=new ArrayList<Integer>();
+    }
+
+
+    private static void seqCount(){
+
+
         for(int i=begin;i<=end;i++){
             if(i%2!=0){
-                System.out.print(i+" ");
+                //System.out.print(i+" ");
+                oddArr.add(i);
                 oddSum+=i;
             }
-        }
-        System.out.println();
-        System.out.println("----------------------------------");
-        System.out.print("Even numbers:");
-        for(int i=end;i>=begin;i--){
+
             if(i%2==0){
-                System.out.print(i+" ");
+                //System.out.print(i+" ");
+                evenArr.add(i);
                 evenSum+=i;
             }
         }
+
+    }
+
+    private static void seqPrint(){
+
+
+        System.out.print("Odd numbers:");
+        System.out.println(oddArr.toString());
+        System.out.println();
+        System.out.println("----------------------------------");
+        System.out.print("Even numbers:");
+        System.out.println(evenArr.toString());
         System.out.println();
         System.out.println("----------------------------------");
         System.out.println("Odd numbers sum: "+oddSum);
         System.out.println("Even numbers sum: "+evenSum);
     }
 
-    public static void seqStart(){
+    public static void seqInput(){
+
         Scanner sc=new Scanner(System.in);
 
         while(true) {
@@ -67,7 +92,13 @@ public class Sequence {
         }
 
 
-        printSeq();
 
+
+    }
+
+    public static void SeqStart(){
+        seqInput();
+        seqCount();
+        seqPrint();
     }
 }

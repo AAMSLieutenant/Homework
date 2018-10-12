@@ -25,7 +25,7 @@ public class Utility {
         }
     }
     public static void start(){
-        Sequence.seqStart();
+        Sequence.SeqStart();
         Fibonacci.fiboStart();
     }
 

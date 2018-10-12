@@ -17,6 +17,32 @@ public class Fibonacci {
 
 
 
+    private static void fiboGet(){
+        Scanner sc=new Scanner(System.in);
+        while(true) {
+            System.out.print("Set the size of the fibonacci sequence:");
+            String s=sc.next();
+            if(Utility.isNumber(s)){
+
+                fibo=Integer.parseInt(s);
+                break;
+            }
+            else{
+                System.out.println("You should input only numbers");
+            }
+        }
+
+    }
+
+
+    private static void fiboPrint(){
+        System.out.println("Fibonacci result:"+fiboResult);
+        System.out.println("Fibonacci biggest odd:"+F1);
+        System.out.println("Fibonacci biggest even:"+F2);
+        System.out.println("Fibonacci odd percentage:"+fOdd);
+        System.out.println("Fibonacci even percentage:"+fEven);
+    }
+
 
     private static void fiboCount(int fibo){
 
@@ -50,25 +76,10 @@ public class Fibonacci {
 
     public static void fiboStart(){
 
-        Scanner sc=new Scanner(System.in);
-        while(true) {
-            System.out.print("Set the size of the fibonacci sequence:");
-            String s=sc.next();
-            if(Utility.isNumber(s)){
-
-                fibo=Integer.parseInt(s);
-                break;
-            }
-            else{
-                System.out.println("You should input only numbers");
-            }
-        }
+        fiboGet();
         fiboCount(fibo);
-        System.out.println("Fibonacci result:"+fiboResult);
-        System.out.println("Fibonacci biggest odd:"+F1);
-        System.out.println("Fibonacci biggest even:"+F2);
-        System.out.println("Fibonacci odd percentage:"+fOdd);
-        System.out.println("Fibonacci even percentage:"+fEven);
+        fiboPrint();
+
     }
 
 
